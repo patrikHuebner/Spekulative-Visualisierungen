@@ -20,7 +20,6 @@ void draw() {
     
     // Die Variable <circleSize> wird durch die X-Position der Maus gesteuert.
     // Der kleinere Wertebereich ist linear für alle Formen
-    
     float circleSize = map(mouseX, 0, width, i*30, i*i*40);  
 
     // Von der Mitte des Fensters ausgehend zeichnen wir einen Kreis mit dem Radius <circleSize>
