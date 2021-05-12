@@ -4,15 +4,18 @@
 
 void setup() {
   size(800, 800);
-  createData();
+  fill(0);
+  stroke(0);
+
+  generiereDaten();
 }
 
 
 float[] daten;
-int datenSaetze = 30;
-void createData() {
-  daten = new float[datenSaetze];
-  for (int i = 0; i < datenSaetze; i++) {
+int datensaetze = 30;
+void generiereDaten() {
+  daten = new float[datensaetze];
+  for (int i = 0; i < datensaetze; i++) {
     float zahl = random(-1, 1);
     daten[i] = zahl;
   }
@@ -22,31 +25,36 @@ void createData() {
 void draw() {
   background(255);
 
-  stroke(0);
   line(0, height/2, width, height/2);
 
   float positionX = 0;
   for (int i = 0; i < daten.length; i++) {
-    float hoehe = map(daten[i], -1, 1, 10, 300);
+    // Balken
+    float groessenMultiplikator = map(mouseY, 0, height, 50, 300);
+    float hoehe = daten[i]*groessenMultiplikator;
     float breite = map(daten[i], -1, 1, 3, 20);
-
-    if (daten[i] > 0) {
-      fill(0);
-      hoehe*=-1;
-    } else {
-      noFill();
-    }
-
-    textSize(8);
     rect(positionX, height/2, breite, hoehe);
-    text(nf(daten[i],1,2), positionX, height/2+hoehe);
 
-    positionX += width/datenSaetze;
+    // Text label
+    textSize(8);
+    float versatz = hoehe-15;
+    if (daten[i] > 0) {
+      versatz = hoehe+15;
+    }
+    text(nf(daten[i], 1, 2), positionX, height/2+versatz);
+
+    positionX += width/datensaetze;
   }
+
+  textSize(10);
+  text("Beliebige Taste drücken um eine neue Version zu generieren", width-320, height-30);
 }
 
 
 
 void keyReleased() {
-  createData();
+  generiereDaten();
+}
+void mouseReleased() {
+  generiereDaten();
 }

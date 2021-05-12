@@ -25,9 +25,9 @@ void draw() {
       fill(0);
 
       // Drei Ideen für unterschiedliche Raster-Füllungen
-      float circleSize = map(mouseX, 0, width, 10, 100); // Variante #1: Alle Formen sind gleich
-      //float circleSize = map(mouseX, 0, width, (x+y)*3, (x+y)*8); // Variante #2: Die Formen wachsen
-      //float circleSize = map(mouseX, 0, width, ((x+y)%5+1)*10, ((x+y)%5+1)*20); // Variante #3: Die Formen alternieren in 5er-Schritten
+      float kreisGroesse = map(mouseX, 0, width, 10, 100); // Variante #1: Alle Formen sind gleich
+      //float kreisGroesse = map(mouseX, 0, width, (x+y)*3, (x+y)*8); // Variante #2: Die Formen wachsen
+      //float kreisGroesse = map(mouseX, 0, width, ((x+y)%5+1)*10, ((x+y)%5+1)*20); // Variante #3: Die Formen alternieren in 5er-Schritten
 
       // Dieser Vektor enthält die X- sowie Y-Position des Kreises im Raster
       // Wir errechnen die Punkte in dem wir die X-/Y-Variable des Loops mit dem Abstand im Grid multiplizieren
@@ -37,7 +37,7 @@ void draw() {
         );
 
       // Kreis an der errechneten Stelle mit der definierten Größe zeichnen
-      ellipse(position.x, position.y, circleSize, circleSize);
+      ellipse(position.x, position.y, kreisGroesse, kreisGroesse);
     }
   }
 }
