@@ -11,6 +11,7 @@ void draw() {
   // Ist der <fortschritt> bei 0, sind wir ganz am Anfang der Interaktion.
   // Ist der <fortschritt> bei 100, sind wir ganz am Ende der Interaktion.
 
+  // HINTERGRUND
   // Hintergrund und Füllfarbe werden durch den Fortschritt gesteuert
   // ---------------------------------------------------------------------------------------------------------
   background(map(fortschritt, 0, 100, 255, 0));
@@ -18,17 +19,20 @@ void draw() {
   stroke(map(fortschritt, 0, 100, 0, 255));
 
 
+  // KREIS
   // Die X-Position des Kreises wird durch den Fortschritt gesteuert
   // ---------------------------------------------------------------------------------------------------------
   ellipse(map(fortschritt, 0, 100, 0, width), height/2, width*0.2, width*0.2);
 
 
+  // LINIE
   // Die Linie wird abhängig durch den Fortschritt gezeichnet: Von oben Links (0,0) bis unten Rechts (width,height)
   // ---------------------------------------------------------------------------------------------------------
   strokeWeight(map(fortschritt, 0, 100, 1, 20));
   line(0, 0, map(fortschritt, 0, 100, 0, width), map(fortschritt, 0, 100, 0, height));
 
 
+  // RECHTECK
   // Die Rotation des Rechtecks wird durch den Fortschritt gesteuert
   // ---------------------------------------------------------------------------------------------------------
   // Da wir rotieren, müssen wir pushMatrix() und popMatrix() nutzen um nur dieses Rechect zu beeinflussen
@@ -45,6 +49,8 @@ void draw() {
   rect(width/2, yPosition, rechteckGroesse, rechteckGroesse);
   popMatrix();
 }
+
+
 
 
 float mausSensitivitaet = 0.3; // Wie sensibel reagiert das System auf die Scroll-Geste? Kleinere Werte = weniger sensibel
